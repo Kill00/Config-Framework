@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.tchristofferson:ConfigUpdater:1.2-SNAPSHOT'
+
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
 }
 

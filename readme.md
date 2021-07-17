@@ -9,9 +9,9 @@
 > * ## 기능
 >   * 콘피그 파일을 플러그인에서 가져오기
 >   * 콘피그 파일 비교 (String, Boolean 등...)
->   * 콘피그 리로드
+>   * ~~콘피그 리로드~~ [더 이상 사용하지 않음]
 >   * 콘피그 실시간 수정
->   * __***콘피그 실시간 저장***__ (임시 사용가능)
+>   * 콘피그 실시간 저장
 ---
 > * ## 적용법
 
@@ -55,19 +55,6 @@ dependencies {
 
 ```java
 public final class ConfigFrameworkSample extends JavaPlugin {
-
-    @Override
-    public void onEnable() {
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
-
-        cfg.makeData("Example-Plugin", "config.yml");
-    }
-}
-```
-또는
-```java
-public final class ConfigFrameworkSample extends JavaPlugin {
     
     public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
@@ -88,19 +75,6 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 ```yaml
 활성화: true
 ```
-```java
-public final class ConfigFrameworkSample extends JavaPlugin {
-
-    @Override
-    public void onEnable() {
-
-        if (cfg.get("Example-Plugin", "config.yml").getBoolean("활성화")) { // True
-            getLogger().info("Config Framework Sample Plugin WORK!");
-        }
-    }
-}
-```
-또는
 ```java
 public final class ConfigFrameworkSample extends JavaPlugin {
 
@@ -141,7 +115,9 @@ public final class ConfigFrameworkSample extends JavaPlugin {
 > ### 콘피그 실시간 저장기능 사용 예제
 config.yml 파일은 아래와 같이 작성되어있습니다.
 ```yaml
+# 주석 1
 활성화: true
+# 주석 2
 ```
 ```java
 public final class ConfigFrameworkSample extends JavaPlugin {
@@ -153,11 +129,13 @@ public final class ConfigFrameworkSample extends JavaPlugin {
     public void onEnable() {
 
         cfg.get(plugin_name, conf).set("활성화", false);
-        cfg.save(plugin_name, conf);
+        cfg.save(plugin_name, conf, true);
     }
 }
 ```
 해당 예제 입력후 config.yml 내용
 ```yaml
+# 주석 1
 활성화: false
+# 주석 2
 ```

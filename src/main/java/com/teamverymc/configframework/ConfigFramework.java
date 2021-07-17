@@ -1,4 +1,4 @@
-package com.teamvery.configframework;
+package com.teamverymc.configframework;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
