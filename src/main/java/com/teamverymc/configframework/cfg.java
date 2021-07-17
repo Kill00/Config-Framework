@@ -137,7 +137,7 @@ public class cfg {
     /**
      * 파일을 리로드합니다
      *
-     * @deprecated
+     * @deprecated {@link #get(String, String)} 을 사용할 때 자동으로 reload 되기 때문에 더 이상 사용하지 않습니다.
      */
     @Deprecated
     public static void reload(String Plugin_Name, String yml){
