@@ -52,13 +52,11 @@ tasks {
                     archiveClassifier.set("")
                     archiveVersion.set(null)
                     from("LICENSE")
-                    relocate("com.tchristofferson.configupdater", "com.teamverymc.configupdater")
                 } else {
                     archiveBaseName.set("ConfigFramework")
                     archiveClassifier.set("")
                     archiveVersion.set("")
                     from("LICENSE")
-                    relocate("com.tchristofferson.configupdater", "com.teamverymc.configframework")
                 }
             }
         }
