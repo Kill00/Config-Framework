@@ -17,13 +17,14 @@ repositories {
         url = 'https://papermc.io/repo/repository/maven-public/'
     }
     maven {
-        name = 'sonatype'
-        url = 'https://oss.sonatype.org/content/groups/public/'
+        name = 'jitpack'
+        url = 'https://jitpack.io'
     }
 }
 
 dependencies {
-    implementation 'com.tchristofferson:ConfigUpdater:1.2-SNAPSHOT'
+    implementation 'com.github.TeamVeryMC:Config-Updater:FINAL2'
+//    implementation fileTree(dir: 'libs', include: ['*.jar']) // | NotUse
 
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
 }
@@ -51,11 +52,13 @@ tasks {
                     archiveClassifier.set("")
                     archiveVersion.set(null)
                     from("LICENSE")
+                    relocate("com.tchristofferson.configupdater", "com.teamverymc.configupdater")
                 } else {
                     archiveBaseName.set("ConfigFramework")
                     archiveClassifier.set("")
                     archiveVersion.set("")
                     from("LICENSE")
+                    relocate("com.tchristofferson.configupdater", "com.teamverymc.configframework")
                 }
             }
         }
