@@ -1,6 +1,6 @@
 # Config Framework
 
-![Build](https://github.com/TeamVery/Config-Framework/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/TeamVery/Config-Framework.svg)](https://jitpack.io/#TeamVery/Config-Framework)
+![Build](https://github.com/TeamVeryMC/Config-Framework/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/TeamVeryMC/Config-Framework.svg)](https://jitpack.io/#TeamVeryMC/Config-Framework)
 ---
 ## 콘피그 관리 프레임워크
 > * 예제 플러그인 : [깃허브](https://github.com/Kill00/config-framework-sample)
