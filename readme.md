@@ -4,6 +4,7 @@
 ---
 ## 콘피그 관리 프레임워크
 > * 예제 플러그인 : [깃허브](https://github.com/Kill00/config-framework-sample)
+> * JavaDocs : [링크](https://teamverymc.github.io/Config-Framework/)
 
 ---
 > * ## 기능
