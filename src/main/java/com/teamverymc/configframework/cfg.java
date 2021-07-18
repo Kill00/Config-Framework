@@ -32,10 +32,10 @@ public class cfg {
     /**
      * 파일 이름을 변경합니다
      */
-    public static void renameTo(String Plugin_Name, String OldName, String NewName) {
+    public static void renamSeTo(String Plugin_Name, String OldName, String NewName) {
         try {
-            var fileOld = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), OldName);
-            var fileNew = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), NewName);
+            File fileOld = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), OldName);
+            File fileNew = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), NewName);
 
             if (fileNew.exists()) {
                 fileOld.delete();
