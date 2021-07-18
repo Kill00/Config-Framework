@@ -1,4 +1,4 @@
-package com.teamverymc.configframework;
+package dev.teamvery.mc.configframework;
 
 import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.Bukkit;
