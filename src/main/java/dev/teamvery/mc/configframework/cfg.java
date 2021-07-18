@@ -13,7 +13,7 @@ import java.util.Objects;
  * ConfigFramework
  *
  * @author TeamVeryMC, Kill00
- * @version Docs: 1.0.0
+ * @version Docs: 1.0.1
  *
  */
 
@@ -23,7 +23,10 @@ public class cfg {
     public static FileConfiguration config;
 
     /**
-     * 파일을 플러그인 폴더에 추가합니다
+     * 컨피그 파일을 플러그인 폴더에 생성합니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
      */
     public static void makeData(String Plugin_Name, String yml) {
         try {
@@ -38,11 +41,15 @@ public class cfg {
     }
 
     /**
-     * 파일 이름을 변경합니다
+     * 컨피그 파일 이름을 변경합니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param OriginalName 소스 폴더내 컨피그 파일 이름(*.yml)
+     * @param NewName 변경할 컨피그 파일 이름(*.yml)
      */
-    public static void renameTo(String Plugin_Name, String OldName, String NewName) {
+    public static void renameTo(String Plugin_Name, String OriginalName, String NewName) {
         try {
-            File fileOld = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), OldName);
+            File fileOld = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), OriginalName);
             File fileNew = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), NewName);
 
             if (fileNew.exists()) {
@@ -56,9 +63,12 @@ public class cfg {
     }
 
     /**
-     * 파일을 플러그인 폴더에 추가합니다
+     * 컨피그 파일을 플러그인 폴더에 생성합니다
      *
-     * @deprecated {@link #makeData(String, String)} 을 사용해 주세요
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
+     *
+     * @deprecated {@link #makeData(String, String)}로 이용해 주세요
      */
     @Deprecated
     public static void setup(String Plugin_Name, String yml) {
@@ -68,7 +78,7 @@ public class cfg {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                System.out.println("알수 없는 오류로 콘피그 파일을 생성할수 없습니다.");
+                System.out.println("알수 없는 오류로 컨피그 파일을 생성할수 없습니다.");
             }
             Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).saveResource(yml, true);
         }
@@ -76,6 +86,11 @@ public class cfg {
 
     /**
      * 파일에 저장된 값을 가져옵니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
+     *
+     * @return 컨피그내 값을 가져오거나 수정
      */
     public static FileConfiguration get(String Plugin_Name, String yml) {
         file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), yml);
@@ -86,6 +101,15 @@ public class cfg {
 
     /**
      * 실시간으로 파일을 수정합니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
+     * @param Path 컨피그 파일내 변경할 값 경로
+     * @param value 변경할 값
+     *
+     * @return 컨피그내 값 수정
+     *
+     * @deprecated {@link #get(String, String)}로 이용해 주세요
      */
     @Deprecated
     public static FileConfiguration set(String Plugin_Name, String yml, String Path, Objects value) {
@@ -98,7 +122,10 @@ public class cfg {
     /**
      * 실시간으로 수정된 파일을 저장합니다
      *
-     * @deprecated {@link #save(String, String, Boolean)} 을 사용해 주세요
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
+     *
+     * @deprecated {@link #save(String, String, Boolean)}로 이용해 주세요
      */
     @Deprecated
     public static void save(String Plugin_Name, String yml) {
@@ -114,6 +141,10 @@ public class cfg {
 
     /**
      * 실시간으로 수정된 파일을 저장합니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
+     * @param NewType 이전 타입(주석 제거)으로 저장 하려면 'false' 아닐경우 'true'
      */
     public static void save(String Plugin_Name, String yml, Boolean NewType) {
         file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(Plugin_Name)).getDataFolder(), yml);
@@ -145,6 +176,9 @@ public class cfg {
 
     /**
      * 파일을 리로드합니다
+     *
+     * @param Plugin_Name 플러그인 이름
+     * @param yml 컨피그 파일 이름(*.yml)
      *
      * @deprecated {@link #get(String, String)} 을 사용할 때 자동으로 reload 되기 때문에 더 이상 사용하지 않습니다.
      */
