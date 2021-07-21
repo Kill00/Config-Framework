@@ -30,7 +30,7 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.TeamVery:Config-Framework:Tag'
+    implementation 'com.github.TeamVeryMC:Config-Framework:Tag'
 }
 ```
 ---
@@ -45,7 +45,7 @@ dependencies {
 ```
 ```xml
 <dependency>
-    <groupId>com.github.TeamVery</groupId>
+    <groupId>com.github.TeamVeryMC</groupId>
     <artifactId>Config-Framework</artifactId>
     <version>Tag</version>
 </dependency>
