@@ -1,10 +1,9 @@
 # Config Framework
 
-![Build](https://github.com/TeamVeryMC/Config-Framework/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/TeamVeryMC/Config-Framework.svg)](https://jitpack.io/#TeamVeryMC/Config-Framework)
+![Build](https://github.com/kill00/Config-Framework/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/kill00/Config-Framework.svg)](https://jitpack.io/#kill00/Config-Framework)
 ---
 ## 콘피그 관리 프레임워크
-> * 예제 플러그인 : [깃허브](https://github.com/Kill00/config-framework-sample)
-> * JavaDocs : [링크](https://teamverymc.github.io/Config-Framework/)
+> * JavaDocs : [링크](https://kill00.github.io/Config-Framework/)
 
 ---
 > * ## 기능
@@ -30,7 +29,7 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.TeamVeryMC:Config-Framework:Tag'
+    implementation 'com.github.kill00:Config-Framework:Tag'
 }
 ```
 ---
@@ -45,7 +44,7 @@ dependencies {
 ```
 ```xml
 <dependency>
-    <groupId>com.github.TeamVeryMC</groupId>
+    <groupId>com.github.kill00</groupId>
     <artifactId>Config-Framework</artifactId>
     <version>Tag</version>
 </dependency>

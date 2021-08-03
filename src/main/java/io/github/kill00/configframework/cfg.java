@@ -1,4 +1,4 @@
-package dev.teamvery.mc.configframework;
+package io.github.kill00.configframework;
 
 import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.Bukkit;
@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * ConfigFramework
  *
- * @author TeamVeryMC, Kill00
+ * @author Kill00
  * @version Docs: 1.0.1
  *
  */

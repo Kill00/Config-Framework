@@ -2,5 +2,5 @@ name: $pluginName
 version: $pluginVersion
 main: $pluginMain
 api-version: 1.16
-authors: [ TeamVeryMC ]
-website: https://github.com/TeamVeryMC/Config-Framework
+authors: [ Kill00 ]
+website: https://github.com/Kill00/Config-Framework

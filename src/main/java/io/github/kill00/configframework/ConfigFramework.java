@@ -1,4 +1,4 @@
-package dev.teamvery.mc.configframework;
+package io.github.kill00.configframework;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
