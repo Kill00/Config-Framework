@@ -1,6 +1,6 @@
 # ConfigAPI
 
-![Build](https://github.com/kill00/ConfigAPI/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/kill00/ConfigAPI.svg)](https://jitpack.io/#kill00/ConfigAPI)
+[![Java CI with Gradle](https://github.com/Kill00/ConfigAPI/actions/workflows/action.yml/badge.svg)](https://github.com/Kill00/ConfigAPI/actions/workflows/action.yml) [![](https://jitpack.io/v/kill00/ConfigAPI.svg)](https://jitpack.io/#kill00/ConfigAPI)
 ---
 ## 콘피그 관리 프레임워크
 > * JavaDocs : [링크](https://kill00.github.io/ConfigAPI/)
