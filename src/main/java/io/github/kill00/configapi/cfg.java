@@ -1,4 +1,4 @@
-package io.github.kill00.configframework;
+package io.github.kill00.configapi;
 
 import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.Bukkit;
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 /**
- * ConfigFramework
+ * ConfigAPI
  *
  * @author Kill00
  * @version Docs: 1.0.1

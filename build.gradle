@@ -53,7 +53,7 @@ tasks {
                     archiveVersion.set(null)
                     from("LICENSE")
                 } else {
-                    archiveBaseName.set("ConfigFramework")
+                    archiveBaseName.set("ConfigAPI")
                     archiveClassifier.set("")
                     archiveVersion.set("")
                     from("LICENSE")

@@ -1,9 +1,9 @@
-# Config Framework
+# ConfigAPI
 
-![Build](https://github.com/kill00/Config-Framework/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/kill00/Config-Framework.svg)](https://jitpack.io/#kill00/Config-Framework)
+![Build](https://github.com/kill00/ConfigAPI/workflows/Java%20CI%20with%20Gradle/badge.svg) [![](https://jitpack.io/v/kill00/ConfigAPI.svg)](https://jitpack.io/#kill00/ConfigAPI)
 ---
 ## 콘피그 관리 프레임워크
-> * JavaDocs : [링크](https://kill00.github.io/Config-Framework/)
+> * JavaDocs : [링크](https://kill00.github.io/ConfigAPI/)
 
 ---
 > * ## 기능
@@ -29,7 +29,7 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.kill00:Config-Framework:Tag'
+    implementation 'com.github.kill00:ConfigAPI:Tag'
 }
 ```
 ---
@@ -45,7 +45,7 @@ dependencies {
 ```xml
 <dependency>
     <groupId>com.github.kill00</groupId>
-    <artifactId>Config-Framework</artifactId>
+    <artifactId>ConfigAPI</artifactId>
     <version>Tag</version>
 </dependency>
 ```
@@ -54,7 +54,7 @@ dependencies {
 > #### **※주의※ 해당 예제를 이용하기전 `resources` 폴더에 `config.yml`등의 파일을 생성해주세요!**
 
 ```java
-public final class ConfigFrameworkSample extends JavaPlugin {
+public final class ConfigAPISample extends JavaPlugin {
     
     public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
@@ -76,7 +76,7 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 활성화: true
 ```
 ```java
-public final class ConfigFrameworkSample extends JavaPlugin {
+public final class ConfigAPISample extends JavaPlugin {
 
     public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
@@ -85,7 +85,7 @@ public final class ConfigFrameworkSample extends JavaPlugin {
     public void onEnable() {
 
         if (cfg.get(plugin_name, conf).getBoolean("활성화")) { // True
-            getLogger().info("Config Framework Sample Plugin WORK!");
+            getLogger().info("ConfigAPI Sample Plugin WORK!");
         }
     }
 }
@@ -97,7 +97,7 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 활성화: true
 ```
 ```java
-public final class ConfigFrameworkSample extends JavaPlugin {
+public final class ConfigAPISample extends JavaPlugin {
 
     public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
@@ -120,7 +120,7 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 # 주석 2
 ```
 ```java
-public final class ConfigFrameworkSample extends JavaPlugin {
+public final class ConfigAPISample extends JavaPlugin {
 
     public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";

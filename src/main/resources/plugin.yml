@@ -1,6 +1,5 @@
 name: $pluginName
 version: $pluginVersion
 main: $pluginMain
-api-version: 1.16
 authors: [ Kill00 ]
-website: https://github.com/Kill00/Config-Framework
+website: https://github.com/Kill00/ConfigAPI
