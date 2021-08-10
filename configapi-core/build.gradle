@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+dependencies {
+    implementation ('com.github.TeamVeryMC:Config-Updater:FINAL2')
+//    implementation fileTree(dir: 'libs', include: ['*.jar']) // | NotUse
+
+    compileOnly ('com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT')
+}
+
+tasks {
+    processResources {
+        filesMatching("**/*.yml") {
+            expand(project.properties)
+        }
+    }
+
+    task install {
+        artifacts {
+            archives jar
+        }
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
+        archiveVersion.set(null)
+        archiveClassifier.set("core-sources")
+        from(sourceSets.main.allSource)
+    }
+
+    project.delete(
+            file('build/resources')
+    )
+}
+
+task createJar(type: Jar, dependsOn: classes) {
+    finalizedBy shadowJar {
+        gradle.taskGraph.whenReady {
+            if (gradle.taskGraph.hasTask(":install")) {
+                archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
+                archiveClassifier.set("core")
+                archiveVersion.set(null)
+                from("LICENSE")
+            } else {
+                archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
+                archiveClassifier.set("core")
+                archiveVersion.set("")
+                from("LICENSE")
+            }
+        }
+    }
+    enabled(false)
+}

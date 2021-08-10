@@ -1,5 +1,4 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'java'
     id 'maven'
 }
@@ -10,66 +9,26 @@ version = properties["pluginVersion"]
 sourceCompatibility = '1.8.0'
 targetCompatibility = '1.8.0'
 
-repositories {
-    mavenCentral()
-    maven {
-        name = 'papermc-repo'
-        url = 'https://papermc.io/repo/repository/maven-public/'
-    }
-    maven {
-        name = 'jitpack'
-        url = 'https://jitpack.io'
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'papermc-repo'
+            url = 'https://papermc.io/repo/repository/maven-public/'
+        }
+        maven {
+            name = 'jitpack'
+            url = 'https://jitpack.io'
+        }
     }
 }
 
 dependencies {
-    implementation 'com.github.TeamVeryMC:Config-Updater:FINAL2'
+    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.7.0')
+    testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.7.0')
+
+    implementation ('com.github.TeamVeryMC:Config-Updater:FINAL2')
 //    implementation fileTree(dir: 'libs', include: ['*.jar']) // | NotUse
 
-    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-}
-
-tasks {
-    compileJava {
-        options.encoding = "UTF-8"
-    }
-
-    javadoc {
-        options.encoding = "UTF-8"
-    }
-
-    processResources {
-        filesMatching("**/*.yml") {
-            expand(project.properties)
-        }
-    }
-
-    jar {
-        finalizedBy shadowJar {
-            gradle.taskGraph.whenReady {
-                if (gradle.taskGraph.hasTask(":install")) {
-                    archiveBaseName.set(null)
-                    archiveClassifier.set("")
-                    archiveVersion.set(null)
-                    from("LICENSE")
-                } else {
-                    archiveBaseName.set("ConfigAPI")
-                    archiveClassifier.set("")
-                    archiveVersion.set("")
-                    from("LICENSE")
-                }
-            }
-        }
-        enabled(false)
-    }
-
-    install {
-        artifacts {
-            archives jar
-        }
-    }
-}
-
-clean {
-    file('build/resources').deleteDir()
+    compileOnly ('com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT')
 }
