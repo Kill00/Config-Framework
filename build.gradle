@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group = properties["pluginGroup"]
@@ -23,12 +24,32 @@ allprojects {
     }
 }
 
-dependencies {
-    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.7.0')
-    testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.7.0')
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
 
-    implementation ('com.github.TeamVeryMC:Config-Updater:FINAL2')
-//    implementation fileTree(dir: 'libs', include: ['*.jar']) // | NotUse
+    buildscript {
+        repositories {
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+        dependencies {
+            classpath('gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0')
+        }
+    }
 
-    compileOnly ('com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT')
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    dependencies {
+        compileOnly ('com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT')
+
+        testImplementation ('org.junit.jupiter:junit-jupiter-api:5.7.0')
+        testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.7.0')
+    }
+}
+
+tasks {
+    jar.onlyIf { false }
+    install.onlyIf { false }
 }

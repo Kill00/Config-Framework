@@ -1,12 +1,5 @@
-plugins {
-    id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
-}
-
 dependencies {
-    implementation(project(":configapi-core"))
-
-    compileOnly ('com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT')
+    implementation(project(path: ":configapi-core"))
 }
 
 tasks {
@@ -16,21 +9,25 @@ tasks {
         }
     }
 
+    task createJar(type: Jar, dependsOn: classes) {
+        finalizedBy shadowJar {
+            archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
+            archiveVersion.set("")
+            archiveClassifier.set("plugin")
+            from("LICENSE", "README.MD")
+        }
+        enabled(false)
+
+        assemble {
+            dependsOn(shadowJar)
+        }
+    }
+
+    artifacts {
+        archives(createJar)
+    }
+
     project.delete(
             file('build/resources')
     )
-}
-
-task createJar(type: Jar, dependsOn: classes) {
-    finalizedBy shadowJar {
-        archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
-        archiveVersion.set("")
-        archiveClassifier.set("plugin")
-        from("LICENSE", "README.MD")
-    }
-    enabled(false)
-
-    assemble {
-        dependsOn(shadowJar)
-    }
 }

@@ -1,3 +1,2 @@
 rootProject.name = 'ConfigAPI'
-include 'configapi-core'
-include 'configapi-plugin'
+include 'configapi-core', 'configapi-plugin'
