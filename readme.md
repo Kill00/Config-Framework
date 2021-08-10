@@ -2,7 +2,7 @@
 
 [![Java CI with Gradle](https://github.com/Kill00/ConfigAPI/actions/workflows/action.yml/badge.svg)](https://github.com/Kill00/ConfigAPI/actions/workflows/action.yml) [![](https://jitpack.io/v/kill00/ConfigAPI.svg)](https://jitpack.io/#kill00/ConfigAPI)
 ---
-## 콘피그 관리 프레임워크
+## 콘피그 관리 애플리케이션 프로그래밍 인터페이스(API)
 > * JavaDocs : [링크](https://kill00.github.io/ConfigAPI/)
 
 ---
