@@ -31,7 +31,7 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    implementation 'com.github.kill00:ConfigAPI:Tag'
+    implementation 'com.github.kill00.ConfigAPI:configapi-core:<Version>'
 }
 ```
 ---
