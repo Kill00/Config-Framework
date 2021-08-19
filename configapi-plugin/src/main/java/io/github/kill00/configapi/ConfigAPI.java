@@ -6,6 +6,6 @@ public final class ConfigAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        // Not Support
     }
 }

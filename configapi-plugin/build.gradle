@@ -1,0 +1,33 @@
+dependencies {
+    implementation(project(path: ":configapi-core"))
+}
+
+tasks {
+    processResources {
+        filesMatching("**/*.yml") {
+            expand(project.properties)
+        }
+    }
+
+    task createJar(type: Jar, dependsOn: classes) {
+        finalizedBy shadowJar {
+            archiveBaseName.set(project.properties.get("pluginName").toString().toLowerCase())
+            archiveVersion.set("")
+            archiveClassifier.set("plugin")
+            from("LICENSE", "README.MD")
+        }
+        enabled(false)
+
+        assemble {
+            dependsOn(shadowJar)
+        }
+    }
+
+    artifacts {
+        archives(createJar)
+    }
+
+    project.delete(
+            file('build/resources')
+    )
+}

@@ -13,6 +13,8 @@
 >   * 콘피그 실시간 수정
 >   * 콘피그 실시간 저장
 ---
+> ### !주의! : 해당 버전은 API 플러그인을 지원하지 않습니다 반드시 fatJar을 통하여 빌드해 주시기 바랍니다.
+---
 > * ## 적용법
 
 > * #### Gradle
@@ -56,15 +58,12 @@ dependencies {
 ```java
 public final class ConfigAPISample extends JavaPlugin {
     
-    public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
     
     @Override
     public void onEnable() {
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
-
-        cfg.makeData(plugin_name, conf);
+        cfg.register(this);
+        cfg.makeData(conf);
     }
 }
 ```
@@ -78,13 +77,13 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 ```java
 public final class ConfigAPISample extends JavaPlugin {
 
-    public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
     
     @Override
     public void onEnable() {
 
-        if (cfg.get(plugin_name, conf).getBoolean("활성화")) { // True
+        cfg.register(this);
+        if (cfg.get(conf).getBoolean("활성화")) { // True
             getLogger().info("ConfigAPI Sample Plugin WORK!");
         }
     }
@@ -99,13 +98,13 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 ```java
 public final class ConfigAPISample extends JavaPlugin {
 
-    public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
 
     @Override
     public void onEnable() {
 
-        cfg.get(plugin_name, conf).set("활성화", false);
+        cfg.register(this);
+        cfg.get(conf).set("활성화", false);
     }
 }
 ```
@@ -128,6 +127,7 @@ public final class ConfigAPISample extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        cfg.register(this);
         cfg.get(plugin_name, conf).set("활성화", false);
         cfg.save(plugin_name, conf, true);
     }

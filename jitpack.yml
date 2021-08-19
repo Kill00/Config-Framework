@@ -1,6 +1,0 @@
-jdk:
-  - openjdk8
-before_install:
-  - chmod +x ./gradlew
-install:
-  - ./gradlew jar -Pgroup=$pluginGroup -Pversion=$pluginVersion -xtest install
