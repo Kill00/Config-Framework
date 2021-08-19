@@ -46,9 +46,9 @@ dependencies {
 ```
 ```xml
 <dependency>
-    <groupId>com.github.kill00</groupId>
-    <artifactId>ConfigAPI</artifactId>
-    <version>Tag</version>
+    <groupId>com.github.kill00.ConfigAPI</groupId>
+    <artifactId>configapi-core</artifactId>
+    <version>Version</version>
 </dependency>
 ```
 ---
@@ -121,15 +121,14 @@ config.yml 파일은 아래와 같이 작성되어있습니다.
 ```java
 public final class ConfigAPISample extends JavaPlugin {
 
-    public static String plugin_name = "Example-Plugin";
     public static String conf = "config.yml";
 
     @Override
     public void onEnable() {
 
         cfg.register(this);
-        cfg.get(plugin_name, conf).set("활성화", false);
-        cfg.save(plugin_name, conf, true);
+        cfg.get(conf).set("활성화", false);
+        cfg.save(conf, true);
     }
 }
 ```

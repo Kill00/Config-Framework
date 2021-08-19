@@ -40,9 +40,9 @@ public class cfg {
      */
     public static void makeData(String yml) {
         try {
-            file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+            file = new File(plugin.getDataFolder(), yml);
             if (!file.exists()) {
-                Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).saveResource(yml, true);
+                plugin.saveResource(yml, true);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,8 +58,8 @@ public class cfg {
      */
     public static void renameTo(String OriginalName, String NewName) {
         try {
-            File fileOld = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), OriginalName);
-            File fileNew = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), NewName);
+            File fileOld = new File(plugin.getDataFolder(), OriginalName);
+            File fileNew = new File(plugin.getDataFolder(), NewName);
 
             if (fileNew.exists()) {
                 fileOld.delete();
@@ -80,7 +80,7 @@ public class cfg {
      */
     @Deprecated
     public static void setup(String yml) {
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
         if (!file.exists()) {
             try {
@@ -88,7 +88,7 @@ public class cfg {
             } catch (IOException e) {
                 System.out.println("알수 없는 오류로 컨피그 파일을 생성할수 없습니다.");
             }
-            Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).saveResource(yml, true);
+            plugin.saveResource(yml, true);
         }
     }
 
@@ -100,7 +100,7 @@ public class cfg {
      * @return 컨피그내 값을 가져오거나 수정
      */
     public static FileConfiguration get(String yml) {
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
         config = YamlConfiguration.loadConfiguration(file);
         return config;
@@ -119,7 +119,7 @@ public class cfg {
      */
     @Deprecated
     public static FileConfiguration set(String yml, String Path, Objects value) {
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
         YamlConfiguration.loadConfiguration(file).set(Path, value);
         return null;
@@ -134,7 +134,7 @@ public class cfg {
      */
     @Deprecated
     public static void save(String yml) {
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
 
         try {
@@ -151,7 +151,7 @@ public class cfg {
      * @param NewType 이전 타입(주석 제거)으로 저장 하려면 'false' 아닐경우 'true'
      */
     public static void save(String yml, Boolean NewType) {
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
         if (NewType) {
 
@@ -162,7 +162,12 @@ public class cfg {
             }
 
             try {
-                ConfigUpdater.update(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())), yml, file, Collections.singletonList("None"));
+                ConfigUpdater.update(
+                        plugin,
+                        yml,
+                        file,
+                        Collections.singletonList("None")
+                );
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -187,7 +192,7 @@ public class cfg {
      */
     @Deprecated
     public static void reload(String yml){
-        file = new File(Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName())).getDataFolder(), yml);
+        file = new File(plugin.getDataFolder(), yml);
 
         config = YamlConfiguration.loadConfiguration(file);
     }
